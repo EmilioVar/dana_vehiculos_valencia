@@ -2,19 +2,36 @@
 
 namespace App\Livewire\Avistamientos;
 
-use App\Models\Avistamiento;
 use Livewire\Component;
 use Livewire\Attributes\On;
+use App\Models\Avistamiento;
+use Illuminate\Validation\Rule;
+use Livewire\Attributes\Validate;
 
 class Create extends Component
 {
     public $lat;
     public $lon;
+    #[Validate]
     public $matricula;
+    #[Validate]
     public $status;
     public $observaciones;
     public $matriculaCargada = false;
 
+    public function rules()
+    {
+        return [
+            'matricula' => [
+                'required',
+                Rule::unique('avistamientos'), 
+            ],
+            'status' => [
+                'required',
+            ]
+        ];
+    }
+    
     #[On('geolocation')]
     public function setGeolocation($lat, $lon) {
         $this->lat = $lat;
@@ -22,6 +39,8 @@ class Create extends Component
     }
 
     public function guardarMatriculaAvistamiento() {
+        $this->validate();
+
         Avistamiento::create([
             'matricula' => strtoupper($this->matricula),
             'lat' => $this->lat,
