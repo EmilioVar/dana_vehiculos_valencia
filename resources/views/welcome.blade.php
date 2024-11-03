@@ -13,9 +13,9 @@
             </section>
         </main>
         <section>
-            <button class="p-3 text-white bg-orange-700 hover:bg-orange-800 transition-all rounded-xl font-bold">
+            <a href="{{ route('matricula.status') }}" class="p-3 text-white bg-orange-700 hover:bg-orange-800 transition-all rounded-xl font-bold">
                 consultar estado de la búsqueda
-            </button>
+            </a>
         </section>
     </header>
 </x-layout>

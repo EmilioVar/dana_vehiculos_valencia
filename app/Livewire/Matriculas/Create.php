@@ -13,6 +13,7 @@ class Create extends Component
     public $matricula;
     #[Validate]
     public $email;
+    public $personas = false;
     public $matriculaCargada = false;
 
     public function rules()
@@ -26,6 +27,9 @@ class Create extends Component
                 'required',
                 'email'
             ],
+            'personas' => [
+                'boolean'
+            ]
         ];
     }
 

@@ -27,4 +27,7 @@ route::get('politica-de-privacidad', function() {
     return view('politica-de-privacidad');
 });
 
+Route::get('matricula-status', function() {
+    return view('matriculas.status.index');
+})->name('matricula.status');
 require __DIR__.'/auth.php';
