@@ -7,7 +7,9 @@ use App\Models\Matricula;
 use Livewire\Attributes\On;
 use App\Models\Avistamiento;
 use Illuminate\Validation\Rule;
+use App\Mail\VehiculoEncontrado;
 use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Mail;
 
 class Create extends Component
 {
@@ -26,13 +28,8 @@ class Create extends Component
     public function rules()
     {
         return [
-            'matricula' => [
-                'required',
-                Rule::unique('avistamientos'), 
-            ],
-            'status' => [
-                'required',
-            ]
+            'matricula' => ['required', Rule::unique('avistamientos')],
+            'status' => ['required'],
         ];
     }
 
@@ -43,13 +40,14 @@ class Create extends Component
         'matricula.unique' => 'La matricula ya se encuentra registrada.',
     ];
 
-    public function updated($property) {
-        if($property === 'matricula') {
+    public function updated($property)
+    {
+        if ($property === 'matricula') {
             $this->matricula = strtoupper($this->matricula);
 
             $matriculaEnBusca = Matricula::where('matricula', $this->matricula)->first();
 
-            if($matriculaEnBusca) {
+            if ($matriculaEnBusca) {
                 $this->buscado = true;
                 $this->buscadoTienePersonas = $matriculaEnBusca->personas;
             } else {
@@ -58,24 +56,32 @@ class Create extends Component
             }
         }
     }
-    
+
     #[On('geolocation')]
-    public function setGeolocation($lat, $lon) {
+    public function setGeolocation($lat, $lon)
+    {
         $this->lat = $lat;
         $this->lon = $lon;
     }
 
-    public function guardarMatriculaAvistamiento() {
+    public function guardarMatriculaAvistamiento()
+    {
         $this->validate();
 
-        Avistamiento::create([
+        $avistamiento = Avistamiento::create([
             'matricula' => strtoupper($this->matricula),
             'lat' => $this->lat,
             'lon' => $this->lon,
             'status' => $this->status,
             'personas' => $this->personas,
-            'observaciones' => $this->observaciones
+            'observaciones' => $this->observaciones,
         ]);
+
+        $matriculaEnBusca = Matricula::where('matricula', $this->matricula)->first();
+
+        if ($matriculaEnBusca) {
+            Mail::to($matriculaEnBusca->email)->send(new VehiculoEncontrado($avistamiento));
+        }
 
         $this->matriculaCargada = true;
     }
