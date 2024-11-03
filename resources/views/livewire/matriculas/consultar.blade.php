@@ -1,15 +1,15 @@
 <div class="max-w-sm mx-auto p-10 rounded-xl bg-white shadow-md dark:bg-gray-800">
-    <form wire:submit.prevent='consultarMatricula'>
+    <form wire:submit.prevent='consultarMatriculasPorEmail'>
         <div class="mb-5 flex items-end">
             <div>
-                <label for="matricula"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Matricula</label>
-                <input style="text-transform: uppercase;" wire:model.live.debounce.250ms='matricula' type="text"
-                    id="matricula"
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo
+                    electrónico</label>
+                <input style="text-transform: uppercase;" wire:model.live.debounce.250ms='email' type="email"
+                    id="email"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                    placeholder="1234MNC" />
+                    placeholder="ejemplo@gmail.com" />
                 <div class="dark:text-gray-300">
-                    @error('matricula')
+                    @error('email')
                         {{ $message }}
                     @enderror
                 </div>
@@ -21,27 +21,25 @@
     <div class="dark:text-gray-200">
         @if ($result)
             <h1>Esta matricula se ha encontrado en nuestros registros:</h1>
-            <ul class="mt-5 list-disc">
-                <li>Matrícula: {{ $this->matricula }}</li>
-                <li>Latitud: {{ $this->lat }}</li>
-                <li>Longitud: {{ $this->lon }}</li>
-                <li>Mapa: <iframe 
-                    width="200" 
-                    height="170" 
-                    frameborder="0" 
-                    marginheight="0" 
-                    marginwidth="0" 
-                    allowfullscreen
-                    src="https://maps.google.com/maps?q={{ $this->lat }},{{ $this->lon }}&hl=es&z=14&output=embed"
-                  >
-                  </iframe></li>
-                <li>Estado: {{ $this->status }}</li>
-                <li>¿Habían personas? {{ $this->personas ? 'desgraciadamente, si' : 'no' }}</li>
-                <li>Observaciones: {{ $this->observaciones }}</li>
-            </ul>
+            @foreach ($matriculasResult as $matricula)
+            <div class="my-5 p-5 shadow-md rounded-xl dark:bg-gray-900 dark:text-gray-200">
+                <ul>
+                    <li>Matrícula: {{ $matricula->matricula }}</li>
+                    <li>Latitud: {{ $matricula->lat }}</li>
+                    <li>Longitud: {{ $matricula->lon }}</li>
+                    <li>Mapa: <iframe width="200" height="170" frameborder="0" marginheight="0" marginwidth="0"
+                            allowfullscreen
+                            src="https://maps.google.com/maps?q={{ $matricula->lat }},{{ $matricula->lon }}&hl=es&z=14&output=embed">
+                        </iframe></li>
+                    <li>Estado: {{ $matricula->status }}</li>
+                    <li>¿Habían personas? {{ $matricula->personas ? 'desgraciadamente, si' : 'no' }}</li>
+                    <li>Observaciones: {{ $matricula->observaciones }}</li>
+                </ul>
+            </div>
+            @endforeach
         @endif
         @if ($notFound)
-            <h1>Esta matricula no se encuentra en nuestros registros</h1>
+            <h1>No hay registros para ese correo electrónico</h1>
         @endif
     </div>
     <div class="flex flex-col items-center">

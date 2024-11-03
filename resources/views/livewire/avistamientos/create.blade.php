@@ -35,7 +35,7 @@
                 </div>
             </div>
             @if($buscado)
-            <p class="dark:text-gray-200 p-2 rounded-r-md bg-gray-100 border-l-4 my-2 border-gray-400">
+            <p class="dark:text-gray-200 p-2 rounded-r-md bg-gray-100 dark:bg-gray-900 border-l-4 my-2 border-gray-400">
                 <b>IMPORTANTE:</b> este vehículo ya está en búsqueda y <b> {{ $buscadoTienePersonas ? 'si' : 'no' }} </b> se han reportado personas dentro. Termina de reportar el registro notificar al dueño.
             </p>
             @endif
