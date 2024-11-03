@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\AvistamientoController;
 use App\Http\Controllers\MatriculaController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('index');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -13,8 +14,17 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+Route::get('consultar-estado-busqueda', function() {
+    //
+})->name('consultar-estado-busqueda');
+
 Route::resources([
-    'matriculas' => MatriculaController::class
+    'matriculas' => MatriculaController::class,
+    'avistamientos' => AvistamientoController::class
 ]);
+
+route::get('politica-de-privacidad', function() {
+    return view('politica-de-privacidad');
+});
 
 require __DIR__.'/auth.php';

@@ -8,7 +8,8 @@ class Avistamiento extends Model
 {
     protected $fillable = [
         'matricula',
-        'ubicacion',
+        'lat',
+        'lon',
         'status',
         'observaciones',
     ];

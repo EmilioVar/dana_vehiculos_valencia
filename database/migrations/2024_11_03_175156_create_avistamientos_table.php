@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('avistamientos', function (Blueprint $table) {
             $table->id();
             $table->string('matricula')->unique();
-            $table->string('ubicacion')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lon')->nullable();
             $table->enum('status', ['aparcado', 'siniestro']);
             $table->text('observaciones')->nullable();
             $table->timestamps();

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('matriculas', function (Blueprint $table) {
             $table->id();
             $table->string('matricula')->unique();
-            $table->string('identificador')->unique();
+            $table->string('email');
             $table->timestamps();
         });
     }

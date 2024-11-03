@@ -8,7 +8,7 @@ class Matricula extends Model
 {
     protected $fillable = [
         'matricula',
-        'identificador'
+        'email'
     ];
 
 }
