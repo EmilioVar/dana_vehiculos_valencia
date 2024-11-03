@@ -3,6 +3,7 @@
 namespace App\Livewire\Avistamientos;
 
 use Livewire\Component;
+use App\Models\Matricula;
 use Livewire\Attributes\On;
 use App\Models\Avistamiento;
 use Illuminate\Validation\Rule;
@@ -14,6 +15,8 @@ class Create extends Component
     public $lon;
     #[Validate]
     public $matricula;
+    public $buscado = false;
+    public $buscadoTienePersonas = false;
     #[Validate]
     public $status;
     public $personas = false;
@@ -42,7 +45,17 @@ class Create extends Component
 
     public function updated($property) {
         if($property === 'matricula') {
-            $property = strtoupper($property);
+            $this->matricula = strtoupper($this->matricula);
+
+            $matriculaEnBusca = Matricula::where('matricula', $this->matricula)->first();
+
+            if($matriculaEnBusca) {
+                $this->buscado = true;
+                $this->buscadoTienePersonas = $matriculaEnBusca->personas;
+            } else {
+                $this->buscado = false;
+                $this->buscadoTienePersonas = false;
+            }
         }
     }
     

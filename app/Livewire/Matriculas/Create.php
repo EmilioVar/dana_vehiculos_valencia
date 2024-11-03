@@ -41,7 +41,8 @@ class Create extends Component
     ];
 
     public function updated($property) {
-        $property = strtoupper($property);
+        $this->matricula = strtoupper($this->matricula);
+        $this->email = strtoupper($this->email);
     }
 
     public function guardarMatricula() {
