@@ -11,6 +11,7 @@ class Avistamiento extends Model
         'lat',
         'lon',
         'status',
+        'personas',
         'observaciones',
     ];
     

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('lat')->nullable();
             $table->string('lon')->nullable();
             $table->enum('status', ['aparcado', 'siniestro']);
+            $table->boolean('personas')->default(false);
             $table->text('observaciones')->nullable();
             $table->timestamps();
         });

@@ -1,12 +1,19 @@
 <x-layout>
     <div>
         <div class="flex justify-center items-center flex-col p-10">
-            <h1 class="dark:text-gray-300 text-xl text-balance my-10 md:text-center">
+            <h1 class="dark:text-gray-300 text-xl text-balance mt-10 md:text-center">
                 En este apartado, debes introducir la mátricula que deseas buscar.
                 Tras ello, podrás utilizar tu correo electrónico para poder realizar consultas posteriores al estado de
                 tu
                 búsqueda.
             </h1>
+            <div id="geolocation-denied" style="display: none;">
+                <h3 href="" class="dark:text-red-500 text-balance my-10 md:text-center">
+                    Has decidido denegar la geolocalización. Ayudaría mucho que el usuario pueda ver la ubicación del vehículo.
+                    <br>
+                    Si es posible, añade en observaciones algo más de información para la persona afectada.
+                </h3>
+            </div>
             <livewire:avistamientos.create />
         </div>
     </div>
@@ -33,6 +40,7 @@
                     switch (error.code) {
                         case error.PERMISSION_DENIED:
                             alert("Se denegó la solicitud de geolocalización.");
+                            document.querySelector('#geolocation-denied').style.display = 'block';
                             break;
                         case error.POSITION_UNAVAILABLE:
                             alert("La ubicación no está disponible.");

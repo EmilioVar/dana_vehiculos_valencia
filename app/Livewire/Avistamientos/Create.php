@@ -16,6 +16,7 @@ class Create extends Component
     public $matricula;
     #[Validate]
     public $status;
+    public $personas = false;
     public $observaciones;
     public $matriculaCargada = false;
 
@@ -30,6 +31,19 @@ class Create extends Component
                 'required',
             ]
         ];
+    }
+
+    protected $messages = [
+        'matricula.required' => 'El campo matricula es requerido.',
+        'email.required' => 'El campo email es requerido.',
+        'email.unique' => 'El email ya se encuentra registrado.',
+        'matricula.unique' => 'La matricula ya se encuentra registrada.',
+    ];
+
+    public function updated($property) {
+        if($property === 'matricula') {
+            $property = strtoupper($property);
+        }
     }
     
     #[On('geolocation')]
@@ -46,6 +60,7 @@ class Create extends Component
             'lat' => $this->lat,
             'lon' => $this->lon,
             'status' => $this->status,
+            'personas' => $this->personas,
             'observaciones' => $this->observaciones
         ]);
 
