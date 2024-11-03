@@ -30,4 +30,5 @@ route::get('politica-de-privacidad', function() {
 Route::get('matricula-status', function() {
     return view('matriculas.status.index');
 })->name('matricula.status');
+
 require __DIR__.'/auth.php';

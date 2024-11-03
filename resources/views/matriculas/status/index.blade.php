@@ -6,7 +6,7 @@
                 Tras ello, podrás utilizar tu correo electrónico para poder realizar consultas posteriores al estado de tu
                 búsqueda.
             </h1>
-
+            <livewire:matriculas.consultar />
         </div>
     </div>
 
