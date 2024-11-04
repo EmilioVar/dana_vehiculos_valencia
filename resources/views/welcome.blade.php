@@ -5,6 +5,20 @@
                 PROGRAMA DE BÚSQUEDA VEHÍCULOS DESAPARECIDOS POR LA DANA EN VALENCIA
             </h1>
         </section>
+        <!-- estadisticas -->
+        <section>
+                @php
+                    $matriculasRegistradas = App\Models\Matricula::count();
+                    $avistamientosRegistrados = App\Models\Avistamiento::count();
+                    $matriculasComunes = App\Models\Matricula::whereIn('matricula', App\Models\Avistamiento::pluck('matricula'))->pluck('matricula')->count();
+                @endphp
+            <div class="flex flex-col text-2xl p-5 bg-gray-200 rounded-xl">
+                <p>Matriculas registradas: {{ $matriculasRegistradas }}</p>
+                <p>Avistamientos registrados: {{ $avistamientosRegistrados }}</p>
+                <p>Matriculas relacionadas con sus dueños: {{ $matriculasComunes }}</p>
+            </div>
+            <div></div>
+        </section>
         <main class="m-10">
             <!-- acciones vehículo -->
             <section class="flex justify-center items-center flex-col w-full">

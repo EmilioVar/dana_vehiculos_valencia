@@ -8,6 +8,7 @@ Los datos son los siguientes:
 <ul>
     <li>Matricula: {{ $avistamiento->matricula }}</li>
     <li>Latitud: {{ $avistamiento->lat }}</li>
+    <li>Longitud: {{ $avistamiento->lon }}</li>
     <li>Estado: {{ $avistamiento->status }}</li>
     <li>¿Habían personas? {{ $avistamiento->personas ? 'desgraciadamente, si' : 'no' }}</li>
     <li>Observaciones: {{ $avistamiento->observaciones }}</li>

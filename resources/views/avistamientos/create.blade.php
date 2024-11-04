@@ -2,10 +2,7 @@
     <div>
         <div class="flex justify-center items-center flex-col p-10">
             <h1 class="dark:text-gray-300 text-xl text-balance mt-10 md:text-center">
-                En este apartado, debes introducir la mátricula que deseas buscar.
-                Tras ello, podrás utilizar tu correo electrónico para poder realizar consultas posteriores al estado de
-                tu
-                búsqueda.
+                En este apartado puedes introducir la matricla de un vehículo, para que al dueño le sea notificado donde está.
             </h1>
             <div id="geolocation-denied" style="display: none;">
                 <h3 href="" class="dark:text-red-500 text-balance my-10 md:text-center">
