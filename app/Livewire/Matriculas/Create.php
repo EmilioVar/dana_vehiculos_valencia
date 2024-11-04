@@ -40,11 +40,6 @@ class Create extends Component
         'matricula.unique' => 'La matricula ya se encuentra registrada.',
     ];
 
-    public function updated($property) {
-        $this->matricula = strtoupper($this->matricula);
-        $this->email = strtoupper($this->email);
-    }
-
     public function guardarMatricula() {
         $this->validate();
 

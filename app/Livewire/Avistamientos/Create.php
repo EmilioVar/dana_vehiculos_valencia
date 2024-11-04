@@ -43,8 +43,6 @@ class Create extends Component
     public function updated($property)
     {
         if ($property === 'matricula') {
-            $this->matricula = strtoupper($this->matricula);
-
             $matriculaEnBusca = Matricula::where('matricula', $this->matricula)->first();
 
             if ($matriculaEnBusca) {
