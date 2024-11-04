@@ -11,7 +11,7 @@
 </head>
 
 <body class="bg-gray-100 dark:bg-black">
-    <div class="fixed top-10 size-14 left-10 bg-black shadow-md dark:bg-transparent border-2 border-gray-200 dark:boder-gray-800 rounded-full">
+    <div class="fixed top-5 left-5 size-14 bg-black shadow-md dark:bg-transparent border-2 border-gray-200 dark:boder-gray-800 rounded-full">
         <a href="https://github.com/EmilioVar/dana_vehiculos_valencia/tree/main" target="_blank">
             <svg viewBox="0 0 255 255" width="100%" height="100%" fill="#fff" xmlns="http://www.w3.org/2000/svg"
                 preserveAspectRatio="xMidYMid">
