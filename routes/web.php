@@ -14,10 +14,6 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::get('consultar-estado-busqueda', function() {
-    //
-})->name('consultar-estado-busqueda');
-
 Route::resources([
     'matriculas' => MatriculaController::class,
     'avistamientos' => AvistamientoController::class
