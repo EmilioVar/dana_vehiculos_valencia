@@ -15,6 +15,10 @@ Los datos son los siguientes:
     <li>Fecha: {{ $avistamiento->created_at }}</li>
 </ul>
 
+<x-mail::button :url="route('matricula.status')">
+Entra aquí e introduce tu correo para más información
+</x-mail::button>
+
 Thanks,<br>
 {{ config('app.name') }}
 </x-mail::message>
