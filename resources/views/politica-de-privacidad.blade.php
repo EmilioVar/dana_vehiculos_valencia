@@ -46,7 +46,7 @@
             <li><strong>Cancelación</strong>: Eliminar sus datos en cualquier momento.</li>
             <li><strong>Oposición</strong>: Oponerse al tratamiento de sus datos.</li>
         </ul>
-        <p>Para ejercer estos derechos, puede contactar a través del correo electrónico ayudaterreta@gmail.com.</p>
+        <p>Para ejercer estos derechos, puede contactar a través del correo electrónico contacto@evarmi.com.</p>
         <p><strong>7. Seguridad de los Datos</strong></p>
         <p>Empleamos medidas técnicas y organizativas para proteger los datos de accesos no autorizados, pérdida o uso
             indebido. Aunque nuestro objetivo es proteger los datos, evarmi.com no puede garantizar la seguridad total
@@ -73,7 +73,7 @@
             del portal.</p>
         <p><strong>11. Contacto para Preguntas sobre Privacidad</strong></p>
         <p>Si tiene alguna pregunta sobre nuestra Política de Privacidad o el uso de sus datos, puede contactarnos a
-            través del correo electrónico ayudaterreta@gmail.com</p>
+            través del correo electrónico contacto@evarmi.com</p>
     </div>
 </body>
 
