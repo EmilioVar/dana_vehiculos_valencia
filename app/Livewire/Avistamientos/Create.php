@@ -77,9 +77,9 @@ class Create extends Component
 
         $matriculaEnBusca = Matricula::where('matricula', $this->matricula)->first();
 
-        if ($matriculaEnBusca) {
+        /* if ($matriculaEnBusca) {
             Mail::to($matriculaEnBusca->email)->queue(new VehiculoEncontrado($avistamiento));
-        }
+        } */
 
         $this->matriculaCargada = true;
     }
